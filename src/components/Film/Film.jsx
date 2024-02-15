@@ -1,19 +1,40 @@
 import React from "react";
+import styles from './Film.module.scss'
 
 export class Film extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			isShowPoster: false
+		};
+	}
+
+	showModalPoster = () => {
+		this.setState(prevState => ({
+			isShowPoster: !prevState.isShowPoster
+		}));
 	}
 
 	render() {
 		const { film } = this.props;
+		const { isShowPoster } = this.state;
+
 		return (
-			<li>
-				<h2>{film.title}</h2>
-				<p>{film.year}</p>
-				<p>{film.desc}</p>
-				<div className="wrapper">
-					<ul>
+			<li className={styles.film + ' ' + styles.film__item}>
+				<div className={styles.film__desc}>
+
+					<div className={styles.film__heading}>
+						<h2>{film.title}</h2>
+						<p className={styles.base_text}><b>Дата выхода:</b> {film.year}</p>
+						<p className={styles.base_text}><b>Описание: </b>{film.desc}</p>
+						<p className={styles.base_text}><b>Рейтинг</b>: {film.rating}</p>
+					</div>
+					<img className={styles.film__poster} src={film.poster} alt={film.title} onClick={() => this.showModalPoster()} />
+					{isShowPoster && <img className={styles.film__poster + ' ' + styles.film__poster_active} src={film.poster} alt={film.title} onClick={() => this.showModalPoster()} />}
+				</div>
+				<iframe className={styles.film__video} src={film.video} width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameBorder="0" allowFullScreen></iframe>
+				<div className={styles.film__screenshots}>
+					<ul className={styles.film__listScreenshots}>
 						{
 							film.screenshots.map((screenshot) => {
 								return <li key={screenshot}><img src={screenshot} alt="" /></li>
@@ -21,67 +42,65 @@ export class Film extends React.Component {
 						}
 					</ul>
 				</div>
-				<img src={film.poster} alt="" />
-				<iframe src={film.video} width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameBorder="0" allowfullscreen></iframe>
-				<ul>
-					{film.countries.map((country) => {
-						return <li>{country}</li>
-					})}
-				</ul>
-				<ul>
-					{film.genre.map((genre) => {
-						return <li>{genre}</li>
-					})}
-				</ul>
-				<ul>
-					{film.translation.map((translation) => {
-						return <li>{translation}</li>
-					})}
-				</ul>
-				<ul>
-					{film.director.map((director) => {
-						return <li>{director}</li>
-					})}
-				</ul>
-				<ul>
-					{film.scenario.map((scenario) => {
-						return <li>{scenario}</li>
-					})}
-				</ul>
-				<ul>
-					{film.producer.map((producer) => {
-						return <li>{producer}</li>
-					})}
-				</ul>
-				<ul>
-					{film.composer.map((composer) => {
-						return <li>{composer}</li>
-					})}
-				</ul>
-				<ul>
-					{film.artists.map((artists) => {
-						return <li>{artists}</li>
-					})}
-				</ul>
-				<ul>
-					{film.installation.map((installation) => {
-						return <li>{installation}</li>
-					})}
-				</ul>
-				<ul>
-					{film.quality.map((quality) => {
-						return <li>{quality}</li>
-					})}
-				</ul>
-				<ul>
-					{film.type.map((type) => {
-						return <li>{type}</li>
-					})}
-				</ul>
-				<p>{film.rating}</p>
+				<div className={styles.film__data}>
+					<ul>
+						<li>Страна:</li>
+						{film.countries.map((country) => {
+							return <li key={country}>{country}</li>
+						})}
+					</ul>
+					<ul><li>Жанр:</li>
+						{film.genre.map((genre) => {
+							return <li key={genre}>{genre}</li>
+						})}
+					</ul>
+					<ul><li>Перевод:</li>
+						{film.translation.map((translation) => {
+							return <li key={translation}>{translation}</li>
+						})}
+					</ul>
+					<ul><li>Режиссёр:</li>
+						{film.director.map((director) => {
+							return <li key={director}>{director}</li>
+						})}
+					</ul>
+					<ul><li>Сценарист:</li>
+						{film.scenario.map((scenario) => {
+							return <li key={scenario}>{scenario}</li>
+						})}
+					</ul>
+					<ul><li>Продюссер:</li>
+						{film.producer.map((producer) => {
+							return <li key={producer}>{producer}</li>
+						})}
+					</ul>
+					<ul><li>Композитор:</li>
+						{film.composer.map((composer) => {
+							return <li key={composer}>{composer}</li>
+						})}
+					</ul>
+					<ul><li>Художники:</li>
+						{film.artists.map((artists) => {
+							return <li key={artists}>{artists}</li>
+						})}
+					</ul>
+					<ul><li>Видеомонтаж:</li>
+						{film.installation.map((installation) => {
+							return <li key={installation}>{installation}</li>
+						})}
+					</ul>
+					<ul><li>Качество видео:</li>
+						{film.quality.map((quality) => {
+							return <li key={quality}>{quality}</li>
+						})}
+					</ul>
+					<ul><li>Тип файла:</li>
+						{film.type.map((type) => {
+							return <li key={type}>{type}</li>
+						})}
+					</ul></div>
+
 			</li >
-
-
 		)
 	}
 }
