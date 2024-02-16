@@ -10,6 +10,7 @@
 		display: flex;
 		margin-bottom: 10px;
 		gap: 10px;
+		align-items: flex-start;
 	}
 
 	&__item {
@@ -55,6 +56,10 @@
 
 	&__heading {
 		text-align: left;
+
+		h2 {
+			margin-top: 0;
+		}
 	}
 
 	.base_text {

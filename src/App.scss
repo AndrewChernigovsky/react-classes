@@ -1,12 +1,32 @@
 @import './variables.scss';
 
+body,
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+
+	#root {
+		height: inherit;
+	}
+}
+
 .container {
 	max-width: 1200px;
 	padding: 0 10px;
 	margin: 0 auto;
+	height: inherit;
+	display: flex;
+	flex-direction: column;
 
 	@media screen and (min-width: $desktop) {
 		padding: 0 40px;
 	}
 
+}
+
+main {
+	flex-grow: 1;
 }

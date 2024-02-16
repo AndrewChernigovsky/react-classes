@@ -1,8 +1,9 @@
 import React from "react";
-import { Film } from "./../Film/Film";
-import styles from "./Films.module.scss";
+import { Film } from "../Film/Film";
+import styles from "./FilmsList.module.scss";
 
-export class Films extends React.Component {
+export class FilmsList extends React.Component {
+
 	render() {
 		const { films } = this.props;
 		return (
@@ -11,7 +12,7 @@ export class Films extends React.Component {
 					{
 						films[0].genre.horror.map((film, index) => {
 							return (
-								< Film key={film + index} film={film} />
+								< Film key={film + index} film={film} isFilm={true} />
 							)
 						})
 					}

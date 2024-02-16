@@ -1,4 +1,8 @@
 import React from "react";
+import { Container } from "./Container";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
+
 
 export class Layout extends React.Component {
 
@@ -9,9 +13,13 @@ export class Layout extends React.Component {
 	render() {
 		return (
 			<>
-				<div className="container">
-					{this.props.children}
-				</div>
+				<Container>
+					<Header />
+					<main>
+						{this.props.children}
+					</main>
+					<Footer />
+				</Container>
 			</>
 		)
 	}
