@@ -27,12 +27,24 @@ export class Film extends React.Component {
 					<div className={styles.film__heading}>
 						<h2>{film.title}</h2>
 						<p className={styles.base_text}><b>Дата выхода:</b> {film.year}</p>
-						<p className={styles.base_text}><b>Описание: </b>{film.desc}</p>
 						<p className={styles.base_text}><b>Рейтинг</b>: {film.rating}</p>
-						<p className={styles.base_text}><Link to='/'>Смотреть фильм</Link></p>
+
+						{isList && <>
+							<p className={styles.base_text}><b>Описание: </b>{film.desc}</p>
+							<p className={styles.base_text}><Link to='/'>Смотреть фильм</Link></p>
+						</>}
 					</div>
 					<img className={styles.film__poster} src={film.poster} alt={film.title} onClick={() => this.showModalPoster()} />
-					{isShowPoster && <img className={styles.film__poster + ' ' + styles.film__poster_active} src={film.poster} alt={film.title} onClick={() => this.showModalPoster()} />}
+					{isShowPoster && <><div className={styles.film__poster + ' ' + styles.film__poster_active} onClick={() => this.showModalPoster()} >
+						<img className={styles.film__poster} src={film.poster} alt={film.title} />
+						<div className={styles.film__mini_desc}>
+							<p className={styles.base_text}><b>Описание: </b>{film.desc}</p>
+							<p className={styles.base_text}><Link to='/'>Смотреть фильм</Link></p>
+						</div>
+					</div>
+
+
+					</>}
 				</div>
 				{
 					isList &&

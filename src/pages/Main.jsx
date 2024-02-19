@@ -25,6 +25,22 @@ export class Main extends React.Component {
 						<h2>Комедия</h2>
 						<FilmsList films={data} genre={'comedy'} />
 					</div>
+					<div className="genre">
+						<h2>Юмор</h2>
+						<FilmsList films={data} genre={'humor'} />
+					</div>
+					<div className="genre">
+						<h2>Боевик</h2>
+						<FilmsList films={data} genre={'action'} />
+					</div>
+					<div className="genre">
+						<h2>Хоррор, Ужасы</h2>
+						<FilmsList films={data} genre={'horror'} />
+					</div>
+					<div className="genre">
+						<h2>Комедия</h2>
+						<FilmsList films={data} genre={'comedy'} />
+					</div>
 					<Comments />
 				</Layout>
 			</>
